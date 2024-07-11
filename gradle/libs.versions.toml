@@ -1,0 +1,10 @@
+[versions]
+java = "8"
+paper = "1.12.2-R0.1-SNAPSHOT"
+lombok = "8.6"
+
+[libraries]
+paper = { group = "com.destroystokyo.paper", name = "paper", version.ref = "paper" }
+
+[plugins]
+lombok = { id = "io.freefair.lombok", version.ref = "lombok"}
