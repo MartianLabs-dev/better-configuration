@@ -1,5 +1,6 @@
 plugins {
     alias libs.plugins.lombok
+    id 'maven-publish'
     id 'java'
 }
 
@@ -27,4 +28,16 @@ java {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.martianlabs'
+            artifactId = 'config'
+            version = '1.0-SNAPSHOT'
+
+            from components.java
+        }
+    }
 }

@@ -123,8 +123,12 @@ public class ConfigInvocationHandler implements InvocationHandler {
                 Optional<Method> result;
 
                 try {
-                    result = Optional.of(this.configInterface.getDeclaredMethod(getterName, method.getParameterTypes()[0]));
-                } catch (Exception e) {
+                    val getter = this.configInterface.getDeclaredMethod(getterName);
+
+                    if (getter.getReturnType() != method.getParameterTypes()[0])
+                        result = Optional.empty();
+                    else result = Optional.of(getter);
+                } catch (NoSuchMethodException e) {
                     result = Optional.empty();
                 }
 
